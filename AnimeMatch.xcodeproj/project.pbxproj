@@ -13,6 +13,8 @@
 		785638332C9FC1FF00336473 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 785638322C9FC1FF00336473 /* Preview Assets.xcassets */; };
 		7856383F2C9FC32700336473 /* AnimeCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7856383E2C9FC32700336473 /* AnimeCatalogView.swift */; };
 		785638432C9FDBA800336473 /* AnimeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638422C9FDBA800336473 /* AnimeDetailsView.swift */; };
+		785638452CA01EC200336473 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638442CA01EC200336473 /* APIManager.swift */; };
+		785638472CA0206F00336473 /* AnimeCatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638462CA0206F00336473 /* AnimeCatalogItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		785638322C9FC1FF00336473 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7856383E2C9FC32700336473 /* AnimeCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCatalogView.swift; sourceTree = "<group>"; };
 		785638422C9FDBA800336473 /* AnimeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailsView.swift; sourceTree = "<group>"; };
+		785638442CA01EC200336473 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		785638462CA0206F00336473 /* AnimeCatalogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCatalogItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,7 @@
 		785638392C9FC22D00336473 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				785638462CA0206F00336473 /* AnimeCatalogItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,6 +107,7 @@
 		7856383C2C9FC25700336473 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				785638442CA01EC200336473 /* APIManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -201,8 +207,10 @@
 			files = (
 				785638432C9FDBA800336473 /* AnimeDetailsView.swift in Sources */,
 				7856382E2C9FC1FD00336473 /* ContentView.swift in Sources */,
+				785638452CA01EC200336473 /* APIManager.swift in Sources */,
 				7856383F2C9FC32700336473 /* AnimeCatalogView.swift in Sources */,
 				7856382C2C9FC1FD00336473 /* AnimeMatchApp.swift in Sources */,
+				785638472CA0206F00336473 /* AnimeCatalogItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
