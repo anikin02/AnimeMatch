@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  AnimeMatch
 //
-//  Created by Данил Аникин on 22.09.2024.
+//  Created by anikin02 on 22.09.2024.
 //
 
 import SwiftUI

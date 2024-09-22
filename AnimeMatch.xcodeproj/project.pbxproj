@@ -51,8 +51,11 @@
 		7856382A2C9FC1FD00336473 /* AnimeMatch */ = {
 			isa = PBXGroup;
 			children = (
+				7856383C2C9FC25700336473 /* API */,
+				7856383A2C9FC23700336473 /* Views */,
+				7856383B2C9FC24100336473 /* ViewModels */,
+				785638392C9FC22D00336473 /* Models */,
 				7856382B2C9FC1FD00336473 /* AnimeMatchApp.swift */,
-				7856382D2C9FC1FD00336473 /* ContentView.swift */,
 				7856382F2C9FC1FF00336473 /* Assets.xcassets */,
 				785638312C9FC1FF00336473 /* Preview Content */,
 			);
@@ -65,6 +68,35 @@
 				785638322C9FC1FF00336473 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		785638392C9FC22D00336473 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7856383A2C9FC23700336473 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7856382D2C9FC1FD00336473 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7856383B2C9FC24100336473 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7856383C2C9FC25700336473 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
