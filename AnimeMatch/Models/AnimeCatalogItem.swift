@@ -7,12 +7,24 @@
 
 import Foundation
 
-struct AnimeCatalogItem: Codable {
+struct AnimeCatalog: Codable {
+  var data: [AnimeCatalogItem]
+}
+
+struct AnimeCatalogItem: Identifiable, Hashable, Codable, Equatable {
   var id: Int
   var name: String
   var russian: String
   var image: ImageAnime
-  var score: Double
+  var score: String
+  
+  static func == (lhs: AnimeCatalogItem, rhs: AnimeCatalogItem) -> Bool {
+    return lhs.id == rhs.id
+  }
+  
+  func hash(into hasher: inout Hasher) {
+      hasher.combine(id)
+  }
 }
 
 struct ImageAnime: Codable {

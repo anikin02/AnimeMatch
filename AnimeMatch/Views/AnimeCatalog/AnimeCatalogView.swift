@@ -11,6 +11,8 @@ struct AnimeCatalogView: View {
   
   @State var searchText = String()
   
+  @ObservedObject var animeCatalogViewModel = AnimeCatalogViewModel()
+  
   var body: some View {
     ZStack {
       VStack {
@@ -24,24 +26,16 @@ struct AnimeCatalogView: View {
         .background(Color(.systemGray6))
         .clipShape(.rect(cornerRadius: 20))
         .padding(.horizontal, 20)
+        .padding(.bottom, 15)
         
         // MARK: Items
         ScrollView {
-          HStack(spacing: 20) {
-            AnimeCatalogItemView(nameText: "Ansatsu Kyoushitsu", score: "8.08")
-            AnimeCatalogItemView(nameText: "Ansatsu Kyoushitsu", score: "8.08")
+          LazyVGrid(columns: [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]) {
+            ForEach(animeCatalogViewModel.animeCatalog) { catalogItem in
+              AnimeCatalogItemView(nameText: catalogItem.name, score: "8.08")
+            }
           }
-          HStack(spacing: 20) {
-            AnimeCatalogItemView(nameText: "Ansatsu Kyoushitsu", score: "8.08")
-            AnimeCatalogItemView(nameText: "Ansatsu Kyoushitsu", score: "8.08")
-          }
-          HStack(spacing: 20) {
-            AnimeCatalogItemView(nameText: "Ansatsu Kyoushitsu", score: "8.08")
-            AnimeCatalogItemView(nameText: "Ansatsu Kyoushitsu", score: "8.08")
-          }
-          NavigationStack {
-            
-          }
+          .padding(.horizontal, 15)
         }
         .scrollIndicators(.hidden)
       }

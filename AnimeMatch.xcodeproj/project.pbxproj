@@ -15,6 +15,7 @@
 		785638432C9FDBA800336473 /* AnimeDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638422C9FDBA800336473 /* AnimeDetailsView.swift */; };
 		785638452CA01EC200336473 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638442CA01EC200336473 /* APIManager.swift */; };
 		785638472CA0206F00336473 /* AnimeCatalogItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638462CA0206F00336473 /* AnimeCatalogItem.swift */; };
+		785638492CA026E000336473 /* AnimeCatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785638482CA026E000336473 /* AnimeCatalogViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		785638422C9FDBA800336473 /* AnimeDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailsView.swift; sourceTree = "<group>"; };
 		785638442CA01EC200336473 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		785638462CA0206F00336473 /* AnimeCatalogItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCatalogItem.swift; sourceTree = "<group>"; };
+		785638482CA026E000336473 /* AnimeCatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCatalogViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 		7856383B2C9FC24100336473 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				785638482CA026E000336473 /* AnimeCatalogViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				7856382E2C9FC1FD00336473 /* ContentView.swift in Sources */,
 				785638452CA01EC200336473 /* APIManager.swift in Sources */,
 				7856383F2C9FC32700336473 /* AnimeCatalogView.swift in Sources */,
+				785638492CA026E000336473 /* AnimeCatalogViewModel.swift in Sources */,
 				7856382C2C9FC1FD00336473 /* AnimeMatchApp.swift in Sources */,
 				785638472CA0206F00336473 /* AnimeCatalogItem.swift in Sources */,
 			);

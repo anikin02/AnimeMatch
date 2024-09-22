@@ -12,7 +12,7 @@ class APIManager {
   
   var catalogPage: Int = 1
   
-  func getAnimeCatalog(completion: @escaping (AnimeCatalogItem) -> Void) {
+  func getAnimeCatalog(completion: @escaping (AnimeCatalog) -> Void) {
       let urlString: String = "https://shikimori.one/api/animes?limit=50&page=\(catalogPage)&order=ranked"
       guard let url = URL(string: urlString) else { return }
       
@@ -23,8 +23,8 @@ class APIManager {
         } else if let data = data {
           do {
             let decoder = JSONDecoder()
-            let response = try decoder.decode(AnimeCatalogItem.self, from: data)
-            completion(response)
+            let response = try decoder.decode([AnimeCatalogItem].self, from: data)
+            completion(AnimeCatalog(data: response))
           } catch {
             print(error.localizedDescription)
           }
