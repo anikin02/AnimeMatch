@@ -8,53 +8,57 @@
 import SwiftUI
 
 struct AnimeCatalogView: View {
-  
-  @State var searchText = String()
-  
   @ObservedObject var animeCatalogViewModel = AnimeCatalogViewModel()
   
   var body: some View {
-    ZStack {
-      VStack {
-        // MARK: Search
-        HStack {
-          Image(systemName: "magnifyingglass")
-          TextField("Search...", text: $searchText)
-        }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 15)
-        .background(Color(.systemGray6))
-        .clipShape(.rect(cornerRadius: 20))
-        .padding(.horizontal, 20)
-        .padding(.bottom, 15)
-        
-        // MARK: Items
-        ScrollView {
-          LazyVGrid(columns: [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]) {
-            ForEach(animeCatalogViewModel.animeCatalog) { animeItem in
-              AnimeCatalogItemView(animeItem: animeItem)
-            }
+    NavigationStack {
+      ZStack {
+        VStack {
+          // MARK: Search
+          HStack {
+            Image(systemName: "magnifyingglass")
+            TextField("Search...", text: $animeCatalogViewModel.searchText)
+              .onChange(of: animeCatalogViewModel.searchText) { value in
+                animeCatalogViewModel.setSearchAnime()
+              }
           }
-          .padding(.horizontal, 15)
-        }
-        .scrollIndicators(.hidden)
-      }
-      
-      // MARK: RecomendButton
-      HStack {
-        Button {
+          .padding(.horizontal, 20)
+          .padding(.vertical, 15)
+          .background(Color(.systemGray6))
+          .clipShape(.rect(cornerRadius: 20))
+          .padding(.horizontal, 20)
+          .padding(.bottom, 15)
           
-        } label: {
-          Text("Recomend")
-            .font(.system(size: 30, weight: .black))
-            .tint(.white)
-            .padding(.vertical, 15)
-            .padding(.horizontal, 40)
-            .background(.appPink)
-            .clipShape(.capsule)
+          // MARK: Items
+          ScrollView {
+            LazyVGrid(columns: [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]) {
+              ForEach(animeCatalogViewModel.animeResult) { animeItem in
+                NavigationLink(destination: AnimeDetailsView()) {
+                  AnimeCatalogItemView(animeItem: animeItem)
+                }
+              }
+            }
+            .padding(.horizontal, 15)
+          }
+          .scrollIndicators(.hidden)
         }
+        
+        // MARK: RecomendButton
+        HStack {
+          Button {
+            
+          } label: {
+            Text("Recomend")
+              .font(.system(size: 30, weight: .black))
+              .tint(.white)
+              .padding(.vertical, 15)
+              .padding(.horizontal, 40)
+              .background(.appPink)
+              .clipShape(.capsule)
+          }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
       }
-      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
     }
   }
 }
@@ -71,10 +75,15 @@ struct AnimeCatalogItemView: View {
         content: { image in
           image.resizable()
             .aspectRatio(contentMode: .fit)
-            .frame(height: 225)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .frame(height: 225)   
         },
         placeholder: {
-          ProgressView()
+          VStack {
+            ProgressView()
+              .frame(height: 225)
+          }
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
       )
       Text(animeItem.name)

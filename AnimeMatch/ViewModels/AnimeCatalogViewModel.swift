@@ -9,13 +9,22 @@ import Foundation
 
 class AnimeCatalogViewModel: ObservableObject {
   
-  @Published var animeCatalog = [AnimeCatalogItem]()
+  var animeCatalog = [AnimeCatalogItem]()
+  
+  @Published var animeResult = [AnimeCatalogItem]()
+  @Published var searchText = String()
   
   init() {
-    APIManager.shared.getAnimeCatalog { responce in
+    setSearchAnime()
+  }
+  
+  func setSearchAnime() {
+    APIManager.shared.getAnimeCatalog(searchText: searchText) { responce in
       DispatchQueue.main.async {
-        self.animeCatalog = responce.data
+        self.animeResult = responce.data
       }
     }
   }
+  
+  
 }
