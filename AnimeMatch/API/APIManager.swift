@@ -39,8 +39,8 @@ class APIManager {
   }
   
   func getAnimeDetails(id: Int, completion: @escaping (AnimeDetails) -> Void) {
-
     let urlString: String = "https://shikimori.one/api/animes/\(id)"
+    
     guard let url = URL(string: urlString) else { return }
     
     let session = URLSession(configuration: .default)

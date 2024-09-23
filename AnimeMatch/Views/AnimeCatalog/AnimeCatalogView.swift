@@ -18,7 +18,7 @@ struct AnimeCatalogView: View {
           HStack {
             Image(systemName: "magnifyingglass")
             TextField("Search...", text: $animeCatalogViewModel.searchText)
-              .onChange(of: animeCatalogViewModel.searchText) { value in
+              .onChange(of: animeCatalogViewModel.searchText) {
                 animeCatalogViewModel.setSearchAnime()
               }
           }
@@ -33,9 +33,10 @@ struct AnimeCatalogView: View {
           ScrollView {
             LazyVGrid(columns: [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]) {
               ForEach(animeCatalogViewModel.animeResult) { animeItem in
-                NavigationLink(destination: AnimeDetailsView()) {
+                NavigationLink(destination: AnimeDetailsView(id: animeItem.id)) {
                   AnimeCatalogItemView(animeItem: animeItem)
                 }
+                .tint(.black)
               }
             }
             .padding(.horizontal, 15)

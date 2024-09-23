@@ -8,18 +8,14 @@
 import Foundation
 
 class AnimeDetailsViewModel: ObservableObject {
-  let id: Int
+  @Published var anime: AnimeDetails?
   
-  var anime: AnimeDetails?
   
-  init(id: Int) {
-    self.id = id
-    
+  func setAnime(id: Int)  {
     APIManager.shared.getAnimeDetails(id: id) { responce in
       DispatchQueue.main.async {
         self.anime = responce
       }
     }
   }
-  
 }

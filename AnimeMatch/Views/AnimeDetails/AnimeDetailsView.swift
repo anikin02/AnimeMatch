@@ -8,39 +8,67 @@
 import SwiftUI
 
 struct AnimeDetailsView: View {
-  @State var genres = ["Shounen", "Action", "Comedy", "School"]
-  var score = 8.33
+  var id: Int
+  
+  @ObservedObject var animeDetailsViewModel = AnimeDetailsViewModel()
+  
+  init(id: Int) {
+    self.id = id
+  }
   
   var body: some View {
     VStack {
       ScrollView {
         VStack {
-          Image("testImage")
-            .resizable()
-            .frame(width: 225, height: 331)
-          Text("Ansatsu Kyoushitsu")
+          
+          if let imageUrlString = animeDetailsViewModel.anime?.image.original,
+             let imageUrl = URL(string: "https://shikimori.one\(imageUrlString)") {
+            AsyncImage(
+              url: imageUrl,
+              content: { image in
+                image.resizable()
+                  .aspectRatio(contentMode: .fit)
+                  .frame(maxWidth: .infinity, maxHeight: .infinity)
+                  .frame(width: 225, height: 331)
+              },
+              placeholder: {
+                VStack {
+                  ProgressView()
+                    .frame(width: 225, height: 331)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+              }
+            )
+          } else {
+            VStack {
+              ProgressView()
+                .frame(width: 225, height: 331)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+          }
+          Text(animeDetailsViewModel.anime?.name ?? "Loading...")
             .font(.system(size: 30, weight: .black))
-          Text("Assassination Classroom")
+          Text(animeDetailsViewModel.anime?.english.first ?? "Loading...")
             .font(.system(size: 20, weight: .bold))
           HStack {
             ForEach(0..<5, id: \.self) { counterStar in
               Image(systemName: "star.fill")
                 .resizable()
-                .foregroundColor(Int(score/2) > Int(counterStar) ? .appPink : .gray)
+                .foregroundColor(Int((Double(animeDetailsViewModel.anime?.score ?? "") ?? 0)/2) > Int(counterStar) ? .appPink : .gray)
                 .frame(width: 24, height: 24)
             }
-            Text(String(score))
+            Text(animeDetailsViewModel.anime?.score ?? "Loading...")
               .font(.system(size: 22))
           }
         }
         
-        VStack(alignment: .leading) {
-          Text("Kind: TV")
-            .font(.system(size: 18))
-          let genresText = genres.joined(separator: ", ")
-          Text("Genres: \(genresText)")
-            .font(.system(size: 18))
-        }
+        //        VStack(alignment: .leading) {
+        //          Text("Kind: TV")
+        //            .font(.system(size: 18))
+        //          let genresText = genres.joined(separator: ", ")
+        //          Text("Genres: \(genresText)")
+        //            .font(.system(size: 18))
+        //        }
         
         VStack(alignment: .leading) {
           Text("Secreanshots")
@@ -51,9 +79,8 @@ struct AnimeDetailsView: View {
       .padding(.top)
     }
     .padding(.horizontal, 20)
+    .onAppear() {
+      animeDetailsViewModel.setAnime(id: id)
+    }
   }
-}
-
-#Preview {
-  AnimeDetailsView()
 }

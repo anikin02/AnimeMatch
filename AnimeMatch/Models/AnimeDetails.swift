@@ -9,6 +9,7 @@ import Foundation
 
 struct AnimeDetails: Codable {
   var name: String
+  var english: [String]
   var score: String
   var image: ImageAnime
 }
