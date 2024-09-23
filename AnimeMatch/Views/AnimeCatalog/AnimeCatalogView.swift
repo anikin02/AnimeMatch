@@ -31,8 +31,8 @@ struct AnimeCatalogView: View {
         // MARK: Items
         ScrollView {
           LazyVGrid(columns: [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)]) {
-            ForEach(animeCatalogViewModel.animeCatalog) { catalogItem in
-              AnimeCatalogItemView(nameText: catalogItem.name, score: "8.08")
+            ForEach(animeCatalogViewModel.animeCatalog) { animeItem in
+              AnimeCatalogItemView(animeItem: animeItem)
             }
           }
           .padding(.horizontal, 15)
@@ -60,17 +60,24 @@ struct AnimeCatalogView: View {
 }
 
 struct AnimeCatalogItemView: View {
-  var nameText: String
-  var score: String
+  var animeItem: AnimeCatalogItem
   
   @State var isSelected = false
   
   var body: some View {
     VStack(alignment: .leading) {
-      Image("testImage")
-        .resizable()
-        .frame(height: 225)
-      Text(nameText)
+      AsyncImage(
+        url: URL(string: "https://shikimori.one\(animeItem.image.original)"),
+        content: { image in
+          image.resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(height: 225)
+        },
+        placeholder: {
+          ProgressView()
+        }
+      )
+      Text(animeItem.name)
         .font(.system(size: 17, weight: .heavy))
         .lineLimit(nil)
         .multilineTextAlignment(.leading)
@@ -78,7 +85,7 @@ struct AnimeCatalogItemView: View {
       HStack(spacing: 2) {
         Image(systemName: "star.circle.fill")
           .foregroundStyle(.green)
-        Text(score)
+        Text(animeItem.score)
           .foregroundStyle(.green)
         Spacer()
         Button {
