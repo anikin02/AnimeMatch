@@ -28,8 +28,7 @@ struct AnimeDetailsView: View {
               content: { image in
                 image.resizable()
                   .aspectRatio(contentMode: .fit)
-                  .frame(maxWidth: .infinity, maxHeight: .infinity)
-                  .frame(width: 225, height: 331)
+                  .frame(width: 350, height: 500)
               },
               placeholder: {
                 VStack {
