@@ -59,4 +59,25 @@ class APIManager {
     })
     task.resume()
   }
+  
+  func getAnimeSimilar(id: Int, completion: @escaping (AnimeCatalog) -> Void) {
+    let urlString: String = "https://shikimori.one/api/animes/\(id)/similar"
+    guard let url = URL(string: urlString) else { return }
+    
+    let session = URLSession(configuration: .default)
+    let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
+      if error != nil {
+        print(error!.localizedDescription)
+      } else if let data = data {
+        do {
+          let decoder = JSONDecoder()
+          let response = try decoder.decode([AnimeCatalogItem].self, from: data)
+          completion(AnimeCatalog(data: response))
+        } catch {
+          print(error.localizedDescription)
+        }
+      }
+    })
+    task.resume()
+  }
 }

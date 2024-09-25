@@ -35,6 +35,7 @@ struct AnimeCatalogView: View {
               ForEach(animeCatalogViewModel.animeResult) { animeItem in
                 NavigationLink(destination: AnimeDetailsView(id: animeItem.id)) {
                   AnimeCatalogItemView(animeItem: animeItem)
+                    .environmentObject(animeCatalogViewModel)
                 }
                 .tint(.black)
               }
@@ -63,57 +64,6 @@ struct AnimeCatalogView: View {
     }
   }
 }
-
-struct AnimeCatalogItemView: View {
-  var animeItem: AnimeCatalogItem
-  
-  @State var isSelected = false
-  
-  var body: some View {
-    VStack(alignment: .leading) {
-      AsyncImage(
-        url: URL(string: "https://shikimori.one\(animeItem.image.original)"),
-        content: { image in
-          image.resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .frame(height: 225)   
-        },
-        placeholder: {
-          VStack {
-            ProgressView()
-              .frame(height: 225)
-          }
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-      )
-      Text(animeItem.name)
-        .font(.system(size: 17, weight: .heavy))
-        .lineLimit(nil)
-        .multilineTextAlignment(.leading)
-        .frame(alignment: .leading)
-      HStack(spacing: 2) {
-        Image(systemName: "star.circle.fill")
-          .foregroundStyle(.green)
-        Text(animeItem.score)
-          .foregroundStyle(.green)
-        Spacer()
-        Button {
-          isSelected.toggle()
-        } label: {
-          Text(isSelected ? "Cancel" : "Select")
-            .font(.system(size: 17, weight: .black))
-            .tint(.white)
-            .padding(.horizontal, 10)
-            .background(isSelected ? .gray : .appPink)
-            .clipShape(.capsule)
-        }
-      }
-    }
-    .frame(width: 160)
-  }
-}
-
 
 #Preview {
   AnimeCatalogView()
