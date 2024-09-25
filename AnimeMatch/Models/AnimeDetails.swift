@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct AnimeDetails: Codable {
+struct AnimeDetails: Codable, Identifiable {
+  var id: Int
   var name: String
   var english: [String]
   var score: String

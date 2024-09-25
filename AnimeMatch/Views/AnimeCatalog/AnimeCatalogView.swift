@@ -47,9 +47,8 @@ struct AnimeCatalogView: View {
         
         // MARK: RecomendButton
         HStack {
-          Button {
-            
-          } label: {
+          NavigationLink(destination:
+                          RecomendationView(animeIds: Array(animeCatalogViewModel.selectedAnimeID))) {
             Text("Recomend")
               .font(.system(size: 30, weight: .black))
               .tint(.white)
