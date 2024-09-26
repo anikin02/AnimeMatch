@@ -44,14 +44,13 @@ struct AnimeCatalogItemView: View {
           .foregroundStyle(.green)
         Spacer()
         Button {
-          if isSelected {
+          if animeCatalogViewModel.selectedAnimeID.contains(animeItem.id) {
             animeCatalogViewModel.removeSelectedID(id: animeItem.id)
           } else {
             animeCatalogViewModel.addSelectedID(id: animeItem.id)
           }
-          isSelected.toggle()
         } label: {
-          Text(isSelected ? "Cancel" : "Select")
+          Text(animeCatalogViewModel.selectedAnimeID.contains(animeItem.id) ? "Cancel" : "Select")
             .font(.system(size: 17, weight: .black))
             .tint(.white)
             .padding(.horizontal, 10)

@@ -45,7 +45,7 @@ struct AnimeCatalogView: View {
           .scrollIndicators(.hidden)
         }
         
-        // MARK: RecomendButton
+        // MARK: RecomendButton and ClearButtton
         HStack {
           NavigationLink(destination:
                           RecomendationView(animeIds: Array(animeCatalogViewModel.selectedAnimeID))) {
@@ -57,6 +57,22 @@ struct AnimeCatalogView: View {
               .background(.appPink)
               .clipShape(.capsule)
           }
+          
+          if !animeCatalogViewModel.selectedAnimeID.isEmpty {
+            Button {
+              animeCatalogViewModel.clearSelectedIDs()
+            } label: {
+              Image(systemName: "trash")
+                .resizable()
+                .frame(width: 30, height: 30)
+                .tint(.white)
+                .padding(.vertical, 15)
+                .padding(.horizontal, 40)
+                .background(.appPink)
+                .clipShape(.capsule)
+            }
+          }
+          
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
       }

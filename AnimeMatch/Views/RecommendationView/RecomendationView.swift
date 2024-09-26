@@ -18,7 +18,10 @@ struct RecomendationView: View {
     VStack {
       ScrollView {
         ForEach(recomendationViewModel.recomendationAnime) { anime in
-          RecomendationItemView(anime: anime)
+          NavigationLink(destination: AnimeDetailsView(id: anime.id)) {
+            RecomendationItemView(anime: anime)
+          }
+          .tint(.black)
         }
         Spacer()
           .frame(height: 400)

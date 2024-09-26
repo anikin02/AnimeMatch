@@ -36,4 +36,8 @@ class AnimeCatalogViewModel: ObservableObject {
   func removeSelectedID(id: Int) {
     selectedAnimeID.remove(id)
   }
+  
+  func clearSelectedIDs() {
+    selectedAnimeID = []
+  }
 }
