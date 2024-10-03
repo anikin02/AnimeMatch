@@ -27,6 +27,6 @@ struct AnimeCatalogItem: Identifiable, Hashable, Codable, Equatable {
   }
 }
 
-struct ImageAnime: Codable {
+struct ImageAnime: Codable {  
   var original: String
 }

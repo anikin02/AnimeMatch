@@ -47,8 +47,10 @@ struct AnimeDetailsView: View {
           }
           Text(animeDetailsViewModel.anime?.name ?? "Loading...")
             .font(.system(size: 30, weight: .black))
+            .multilineTextAlignment(.center)
           Text(animeDetailsViewModel.anime?.english.first ?? "Loading...")
             .font(.system(size: 20, weight: .bold))
+            .multilineTextAlignment(.center)
           HStack {
             ForEach(0..<5, id: \.self) { counterStar in
               Image(systemName: "star.fill")
@@ -61,23 +63,23 @@ struct AnimeDetailsView: View {
           }
         }
         
-        //        VStack(alignment: .leading) {
-        //          Text("Kind: TV")
-        //            .font(.system(size: 18))
-        //          let genresText = genres.joined(separator: ", ")
-        //          Text("Genres: \(genresText)")
-        //            .font(.system(size: 18))
-        //        }
-        
         VStack(alignment: .leading) {
-          Text("Secreanshots")
-            .font(.system(size: 20))
+          Text("Genres:")
+            .font(.system(size: 20, weight: .bold))
+          if let genres = animeDetailsViewModel.anime?.genres {
+            HStack {
+              Text(genres.map { $0.name }.joined(separator: ", "))
+            }
+          }
+          
+          Text("Secreanshots:")
+            .font(.system(size: 20, weight: .bold))
           ScrollView(.horizontal) {
             HStack {
               if let screenshots = animeDetailsViewModel.anime?.screenshots {
-                ForEach(0..<screenshots.count) { index in
+                ForEach(screenshots, id: \.original) { screenshot in
                   AsyncImage(
-                    url: URL(string: "https://shikimori.one\(screenshots[index].original)"),
+                    url: URL(string: "https://shikimori.one\(screenshot.original)"),
                     content: { image in
                       image.resizable()
                         .aspectRatio(contentMode: .fit)

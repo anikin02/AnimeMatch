@@ -14,4 +14,5 @@ struct AnimeDetails: Codable, Identifiable {
   var score: String
   var image: ImageAnime
   var screenshots: [ImageAnime]
+  var genres: [Genre]
 }
