@@ -8,9 +8,6 @@
 import Foundation
 
 class AnimeCatalogViewModel: ObservableObject {
-  
-  var animeCatalog = [AnimeCatalogItem]()
-  
   @Published var selectedAnimeID = Set<Int>()
   
   @Published var animeResult = [AnimeCatalogItem]()
@@ -23,6 +20,7 @@ class AnimeCatalogViewModel: ObservableObject {
   func setSearchAnime() {
     APIManager.shared.getAnimeCatalog(searchText: searchText) { responce in
       DispatchQueue.main.async {
+        self.animeResult = []
         self.animeResult = responce.data
       }
     }

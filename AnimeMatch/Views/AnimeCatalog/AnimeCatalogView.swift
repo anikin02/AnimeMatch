@@ -41,6 +41,8 @@ struct AnimeCatalogView: View {
               }
             }
             .padding(.horizontal, 15)
+            Spacer()
+              .frame(height: 400)
           }
           .scrollIndicators(.hidden)
         }
@@ -54,23 +56,22 @@ struct AnimeCatalogView: View {
               .tint(.white)
               .padding(.vertical, 15)
               .padding(.horizontal, 40)
-              .background(.appPink)
+              .background(animeCatalogViewModel.selectedAnimeID.isEmpty ? .gray : .appPink)
               .clipShape(.capsule)
           }
+                          .disabled(animeCatalogViewModel.selectedAnimeID.isEmpty)
           
-          if !animeCatalogViewModel.selectedAnimeID.isEmpty {
-            Button {
-              animeCatalogViewModel.clearSelectedIDs()
-            } label: {
-              Image(systemName: "trash")
-                .resizable()
-                .frame(width: 30, height: 30)
-                .tint(.white)
-                .padding(.vertical, 15)
-                .padding(.horizontal, 40)
-                .background(.appPink)
-                .clipShape(.capsule)
-            }
+          Button {
+            animeCatalogViewModel.clearSelectedIDs()
+          } label: {
+            Image(systemName: "trash")
+              .resizable()
+              .frame(width: 30, height: 30)
+              .tint(animeCatalogViewModel.selectedAnimeID.isEmpty ? Color(.darkGray) : .white)
+              .padding(.vertical, 15)
+              .padding(.horizontal, 40)
+              .background(animeCatalogViewModel.selectedAnimeID.isEmpty ? .gray : .appPink)
+              .clipShape(.capsule)
           }
           
         }

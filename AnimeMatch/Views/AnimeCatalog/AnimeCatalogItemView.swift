@@ -12,8 +12,6 @@ struct AnimeCatalogItemView: View {
   
   @EnvironmentObject var animeCatalogViewModel: AnimeCatalogViewModel
   
-  @State var isSelected = false
-  
   var body: some View {
     VStack(alignment: .leading) {
       AsyncImage(
@@ -54,7 +52,7 @@ struct AnimeCatalogItemView: View {
             .font(.system(size: 17, weight: .black))
             .tint(.white)
             .padding(.horizontal, 10)
-            .background(isSelected ? .gray : .appPink)
+            .background(animeCatalogViewModel.selectedAnimeID.contains(animeItem.id) ? .gray : .appPink)
             .clipShape(.capsule)
         }
       }

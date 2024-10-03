@@ -60,6 +60,9 @@ struct RecomendationItemView: View {
       VStack(alignment: .leading) {
         Text(anime.name)
           .font(.system(size: 20, weight: .black))
+          .lineLimit(nil)
+          .multilineTextAlignment(.leading)
+          .frame(alignment: .leading)
         
         HStack {
           Image(systemName: "star.circle.fill")
