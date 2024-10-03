@@ -13,4 +13,5 @@ struct AnimeDetails: Codable, Identifiable {
   var english: [String]
   var score: String
   var image: ImageAnime
+  var screenshots: [ImageAnime]
 }

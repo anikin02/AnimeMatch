@@ -21,6 +21,7 @@
 		789B7F682CA3C46F00F91475 /* AnimeCatalogItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B7F672CA3C46F00F91475 /* AnimeCatalogItemView.swift */; };
 		789B7F6A2CA417F100F91475 /* RecomendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B7F692CA417F100F91475 /* RecomendationView.swift */; };
 		789B7F6C2CA41D9200F91475 /* RecomendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B7F6B2CA41D9200F91475 /* RecomendationViewModel.swift */; };
+		789B7F6E2CAE4DFB00F91475 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789B7F6D2CAE4DFB00F91475 /* Genre.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		789B7F672CA3C46F00F91475 /* AnimeCatalogItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeCatalogItemView.swift; sourceTree = "<group>"; };
 		789B7F692CA417F100F91475 /* RecomendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationView.swift; sourceTree = "<group>"; };
 		789B7F6B2CA41D9200F91475 /* RecomendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecomendationViewModel.swift; sourceTree = "<group>"; };
+		789B7F6D2CAE4DFB00F91475 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				785638462CA0206F00336473 /* AnimeCatalogItem.swift */,
 				7856384C2CA0F02800336473 /* AnimeDetails.swift */,
+				789B7F6D2CAE4DFB00F91475 /* Genre.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				789B7F682CA3C46F00F91475 /* AnimeCatalogItemView.swift in Sources */,
 				785638452CA01EC200336473 /* APIManager.swift in Sources */,
 				7856383F2C9FC32700336473 /* AnimeCatalogView.swift in Sources */,
+				789B7F6E2CAE4DFB00F91475 /* Genre.swift in Sources */,
 				785638492CA026E000336473 /* AnimeCatalogViewModel.swift in Sources */,
 				7856382C2C9FC1FD00336473 /* AnimeMatchApp.swift in Sources */,
 				785638472CA0206F00336473 /* AnimeCatalogItem.swift in Sources */,

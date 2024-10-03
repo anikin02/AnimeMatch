@@ -72,6 +72,29 @@ struct AnimeDetailsView: View {
         VStack(alignment: .leading) {
           Text("Secreanshots")
             .font(.system(size: 20))
+          ScrollView(.horizontal) {
+            HStack {
+              if let screenshots = animeDetailsViewModel.anime?.screenshots {
+                ForEach(0..<screenshots.count) { index in
+                  AsyncImage(
+                    url: URL(string: "https://shikimori.one\(screenshots[index].original)"),
+                    content: { image in
+                      image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 350, height: 200)
+                    },
+                    placeholder: {
+                      VStack {
+                        ProgressView()
+                          .frame(width: 350, height: 200)
+                      }
+                      .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
+                  )
+                }
+              }
+            }
+          }
         }
       }
       .scrollIndicators(.hidden)

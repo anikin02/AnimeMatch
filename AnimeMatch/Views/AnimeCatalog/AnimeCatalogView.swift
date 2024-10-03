@@ -15,19 +15,21 @@ struct AnimeCatalogView: View {
       ZStack {
         VStack {
           // MARK: Search
-          HStack {
-            Image(systemName: "magnifyingglass")
-            TextField("Search...", text: $animeCatalogViewModel.searchText)
-              .onChange(of: animeCatalogViewModel.searchText) {
-                animeCatalogViewModel.setSearchAnime()
-              }
+          VStack {
+            HStack {
+              Image(systemName: "magnifyingglass")
+              TextField("Search...", text: $animeCatalogViewModel.searchText)
+                .onChange(of: animeCatalogViewModel.searchText) {
+                  animeCatalogViewModel.setSearchAnime()
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 15)
+            .background(Color(.systemGray6))
+            .clipShape(.rect(cornerRadius: 20))
+            .padding(.horizontal, 20)
+            .padding(.bottom, 15)
           }
-          .padding(.horizontal, 20)
-          .padding(.vertical, 15)
-          .background(Color(.systemGray6))
-          .clipShape(.rect(cornerRadius: 20))
-          .padding(.horizontal, 20)
-          .padding(.bottom, 15)
           
           // MARK: Items
           ScrollView {

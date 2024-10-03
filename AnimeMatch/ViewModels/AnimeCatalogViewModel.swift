@@ -8,13 +8,25 @@
 import Foundation
 
 class AnimeCatalogViewModel: ObservableObject {
+  @Published var animeResult = [AnimeCatalogItem]()
+  @Published var genres = [Genre]()
+  
+  @Published var searchText = String()
   @Published var selectedAnimeID = Set<Int>()
   
-  @Published var animeResult = [AnimeCatalogItem]()
-  @Published var searchText = String()
+  @Published var selectedGenre = String()
   
   init() {
     setSearchAnime()
+    setGenres()
+  }
+  
+  func setGenres() {
+    APIManager.shared.getGenres() { responce in
+      DispatchQueue.main.async {
+        self.genres = responce
+      }
+    }
   }
   
   func setSearchAnime() {
@@ -25,7 +37,6 @@ class AnimeCatalogViewModel: ObservableObject {
       }
     }
   }
-  
   
   func addSelectedID(id: Int) {
     selectedAnimeID.insert(id)
